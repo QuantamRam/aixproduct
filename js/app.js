@@ -679,17 +679,17 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryTierName.textContent = tierStr.split('(')[0].trim();
             
             if (tierStr.includes('1,499')) {
-                summaryTierPrice.textContent = '₹1,499 ($18 USD)';
+                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
                 selectedPlanName = "Complete Bundle";
-                selectedPlanPrice = 1499;
+                selectedPlanPrice = 1;
             } else if (tierStr.includes('4,999')) {
-                summaryTierPrice.textContent = '₹4,999 ($59 USD)';
+                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
                 selectedPlanName = "Team License";
-                selectedPlanPrice = 4999;
+                selectedPlanPrice = 1;
             } else {
-                summaryTierPrice.textContent = '₹999 ($12 USD)';
+                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
                 selectedPlanName = "Digital Playbook";
-                selectedPlanPrice = 999;
+                selectedPlanPrice = 1;
             }
 
             // Open Checkout Modal
