@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------------------------------
     // 6. RAZORPAY PAYMENT GATEWAY & DYNAMIC PDF GENERATORS (INVOICE & LETTER)
     // --------------------------------------------------------------------------
-    const RAZORPAY_KEY_ID = "rzp_test_TiD5dvVULwYEcg";
+    const RAZORPAY_KEY_ID = "rzp_live_TiDx4YGYINxFLi";
 
     let lastOrderDetails = {
         name: "Valued Builder",
