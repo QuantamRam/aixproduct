@@ -320,13 +320,262 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------------------------
-    // 6. RAZORPAY PAYMENT GATEWAY INTEGRATION
+    // 6. RAZORPAY PAYMENT GATEWAY & DYNAMIC PDF GENERATORS (INVOICE & LETTER)
     // --------------------------------------------------------------------------
     const RAZORPAY_KEY_ID = "rzp_test_TiD5dvVULwYEcg";
 
-    function launchRazorpayCheckout(planName, amountInINR, userEmail = "") {
+    let lastOrderDetails = {
+        name: "Valued Builder",
+        email: "builder@aixproduct.com",
+        company: "Individual Practitioner",
+        planName: "Digital Playbook",
+        amount: 999,
+        txId: "rzp_test_sample"
+    };
+
+    function generateCustomInvoicePDF(data) {
+        if (!window.jspdf) {
+            alert("PDF Generator library loading... Please try again in 2 seconds.");
+            return;
+        }
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+        const buyerName = data.name || "Valued Customer";
+        const buyerEmail = data.email || "customer@company.com";
+        const companyName = data.company || "Individual Practitioner";
+        const planName = data.planName || "Digital Playbook";
+        const amountINR = data.amount || 999;
+        const txId = data.txId || "rzp_test_sample";
+        const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+        const invoiceNo = "INV-2026-" + Math.floor(1000 + Math.random() * 9000);
+
+        // Header Banner
+        doc.setFillColor(110, 44, 244); // Primary Violet #6E2CF4
+        doc.rect(0, 0, 595, 80, 'F');
+
+        // Logo & Header Title
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(22);
+        doc.text("AI x PRODUCT", 40, 48);
+
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text("OFFICIAL TAX INVOICE & L&D REIMBURSEMENT RECEIPT", 260, 48);
+
+        // Invoice Meta Section
+        doc.setTextColor(15, 23, 42);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "bold");
+        doc.text(`INVOICE NO: ${invoiceNo}`, 40, 115);
+        doc.text(`DATE: ${dateStr}`, 40, 130);
+        doc.text(`PAYMENT ID: ${txId}`, 40, 145);
+
+        // Paid Status Badge
+        doc.setFillColor(236, 253, 245);
+        doc.rect(440, 105, 115, 30, 'F');
+        doc.setTextColor(6, 95, 70);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.text("PAID IN FULL ✓", 455, 124);
+
+        // Line Divider
+        doc.setDrawColor(226, 232, 240);
+        doc.setLineWidth(1);
+        doc.line(40, 165, 555, 165);
+
+        // Customer & Company Details
+        doc.setTextColor(100, 116, 139);
+        doc.setFontSize(9);
+        doc.setFont("helvetica", "bold");
+        doc.text("BILLED TO / REIMBURSEMENT FOR:", 40, 185);
+
+        doc.setTextColor(15, 23, 42);
+        doc.setFontSize(12);
+        doc.setFont("helvetica", "bold");
+        doc.text(buyerName, 40, 203);
+
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Email: ${buyerEmail}`, 40, 218);
+        doc.text(`Organization / Company: ${companyName}`, 40, 233);
+
+        // Itemized Table Header
+        doc.setFillColor(248, 246, 254);
+        doc.rect(40, 260, 515, 25, 'F');
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.setTextColor(110, 44, 244);
+        doc.text("DESCRIPTION / ITEM", 50, 276);
+        doc.text("QTY", 390, 276);
+        doc.text("AMOUNT (INR)", 460, 276);
+
+        // Item Row
+        doc.setTextColor(15, 23, 42);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(10);
+        doc.text(`Building AI Products That Ship — ${planName}`, 50, 305);
+        doc.text("1", 400, 305);
+        doc.text(`₹${amountINR.toLocaleString()}`, 465, 305);
+
+        doc.line(40, 320, 555, 320);
+
+        // Totals Box
+        doc.setFont("helvetica", "bold");
+        doc.text("Subtotal:", 380, 345);
+        doc.text(`₹${amountINR.toLocaleString()}`, 465, 345);
+
+        doc.setFont("helvetica", "normal");
+        doc.text("Taxes & GST (18% Included):", 285, 362);
+        doc.text(`₹${(amountINR * 0.18).toFixed(2)}`, 465, 362);
+
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(11);
+        doc.setTextColor(110, 44, 244);
+        doc.text("TOTAL PAID:", 365, 385);
+        doc.text(`₹${amountINR.toLocaleString()}`, 465, 385);
+
+        // Corporate L&D Reimbursement Note Box
+        doc.setFillColor(243, 239, 254);
+        doc.rect(40, 420, 515, 75, 'F');
+        doc.setDrawColor(221, 214, 254);
+        doc.rect(40, 420, 515, 75, 'S');
+
+        doc.setTextColor(110, 44, 244);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(10);
+        doc.text("CORPORATE L&D / SKILL UPGRADE REIMBURSEMENT NOTE:", 54, 440);
+
+        doc.setTextColor(51, 65, 85);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(9);
+        doc.text("This official invoice confirms payment for professional AI Product Management & Engineering educational materials.", 54, 456);
+        doc.text("Eligible for Corporate Learning & Development (L&D), Employee Upskilling, or Professional Software Book", 54, 470);
+        doc.text("expense reimbursement under standard company training budgets.", 54, 484);
+
+        // Footer
+        doc.setTextColor(148, 163, 184);
+        doc.setFontSize(8);
+        doc.text("AI x PRODUCT Press • Ram Chandar Sanaboyina • https://aixproduct.netlify.app", 160, 780);
+
+        doc.save(`Invoice_${invoiceNo}_${buyerName.replace(/\s+/g, '_')}.pdf`);
+    }
+
+    function generateAppreciationLetterPDF(data) {
+        if (!window.jspdf) {
+            alert("PDF Generator library loading... Please try again in 2 seconds.");
+            return;
+        }
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: 'pt', format: 'a4' });
+
+        const buyerName = data.name || "Valued Product Leader";
+        const companyStr = data.company ? `at ${data.company}` : "";
+        const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        // Outer Double Borders
+        doc.setDrawColor(110, 44, 244);
+        doc.setLineWidth(2);
+        doc.rect(20, 20, 555, 802);
+
+        doc.setDrawColor(221, 214, 254);
+        doc.setLineWidth(1);
+        doc.rect(26, 26, 543, 790);
+
+        // Header Logo & Banner
+        doc.setFillColor(110, 44, 244);
+        doc.rect(40, 50, 515, 60, 'F');
+
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(24);
+        doc.text("AI x PRODUCT", 60, 88);
+
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text("OFFICIAL EXECUTIVE ENDORSEMENT", 330, 88);
+
+        // Date
+        doc.setTextColor(100, 116, 139);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text(`Date: ${dateStr}`, 60, 140);
+
+        // Document Title
+        doc.setTextColor(15, 23, 42);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(16);
+        doc.text("LETTER OF PROFESSIONAL APPRECIATION & CAREER ENDORSEMENT", 60, 175);
+
+        // Recipient Salutation
+        doc.setFontSize(13);
+        doc.setFont("helvetica", "bold");
+        doc.setTextColor(110, 44, 244);
+        doc.text(`To: ${buyerName} ${companyStr}`, 60, 215);
+
+        // Letter Body Paragraphs
+        doc.setTextColor(51, 65, 85);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(11);
+        
+        doc.text("Dear " + buyerName + ",", 60, 250);
+
+        doc.text("On behalf of the AI x PRODUCT leadership community, I want to personally commend and recognize", 60, 280);
+        doc.text("your dedicated investment in professional AI Product Management & Systems Architecture mastery", 60, 298);
+        doc.text("through the 'Building AI Products That Ship' playbook.", 60, 316);
+
+        doc.text("As artificial intelligence reshapes modern software creation, the bottleneck in product development has", 60, 350);
+        doc.text("fundamentally shifted. While building has become cheap, high-caliber product judgment has become", 60, 368);
+        doc.text("the rarest asset in technology. Moving beyond simple weekend demos to orchestrate battle-hardened,", 60, 386);
+        doc.text("high-margin, zero-hallucination AI products requires exceptional strategic rigor.", 60, 404);
+
+        doc.text("By actively mastering Model-Product Fit, Automated Eval Harnesses, Token Economics, and Non-Happy State", 60, 438);
+        doc.text("UX Design, you demonstrate a clear commitment to driving measurable engineering excellence and sustainable", 60, 456);
+        doc.text("business growth within your organization.", 60, 474);
+
+        doc.text("We proudly endorse your leadership initiative and commend your dedication to shaping the future of", 60, 508);
+        doc.text("AI-native product development.", 60, 526);
+
+        // Quote Box
+        doc.setFillColor(248, 246, 254);
+        doc.rect(60, 560, 475, 45, 'F');
+        doc.setTextColor(88, 30, 203);
+        doc.setFont("helvetica", "bold-italic");
+        doc.setFontSize(11);
+        doc.text('"Small, shipped, measured, and improved beats big, perfect, and imagined."', 80, 587);
+
+        // Signature Block
+        doc.setTextColor(15, 23, 42);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(12);
+        doc.text("Sincerely,", 60, 640);
+
+        doc.setFontSize(14);
+        doc.setTextColor(110, 44, 244);
+        doc.text("Ram Chandar Sanaboyina", 60, 670);
+
+        doc.setTextColor(100, 116, 139);
+        doc.setFontSize(10);
+        doc.setFont("helvetica", "normal");
+        doc.text("Author & AI Systems Architect, AI x PRODUCT", 60, 686);
+        doc.text("https://aixproduct.netlify.app", 60, 702);
+
+        doc.save(`Career_Endorsement_Letter_${buyerName.replace(/\s+/g, '_')}.pdf`);
+    }
+
+    function launchRazorpayCheckout(planName, amountInINR, userEmail = "", userName = "", userCompany = "") {
         const amountInPaise = amountInINR * 100;
         
+        lastOrderDetails = {
+            name: userName || "Valued Builder",
+            email: userEmail || "builder@aixproduct.com",
+            company: userCompany || "Individual Practitioner",
+            planName: planName,
+            amount: amountInINR,
+            txId: "rzp_test_" + Math.random().toString(36).substring(2, 12)
+        };
+
         const options = {
             key: RAZORPAY_KEY_ID,
             amount: amountInPaise,
@@ -335,6 +584,9 @@ document.addEventListener('DOMContentLoaded', () => {
             description: `Building AI Products That Ship — ${planName}`,
             image: "assets/book_cover.jpg",
             handler: function (response) {
+                // Update transaction ID from Razorpay response
+                lastOrderDetails.txId = response.razorpay_payment_id || lastOrderDetails.txId;
+
                 // Close checkout modal if active
                 if (checkoutModal) checkoutModal.classList.remove('active');
                 
@@ -342,11 +594,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const downloadSuccessModal = document.getElementById('download-success-modal');
                 const successTxId = document.getElementById('success-tx-id');
                 const successTierName = document.getElementById('success-tier-name');
+                const successBuyerName = document.getElementById('success-buyer-name');
                 const btnOpenTemplates = document.getElementById('btn-open-templates');
                 const closeSuccessModal = document.getElementById('close-success-modal');
 
-                if (successTxId) successTxId.textContent = response.razorpay_payment_id || "rzp_test_success";
+                if (successTxId) successTxId.textContent = lastOrderDetails.txId;
                 if (successTierName) successTierName.textContent = `${planName} (₹${amountInINR})`;
+                if (successBuyerName) successBuyerName.textContent = lastOrderDetails.name;
 
                 if (btnOpenTemplates) {
                     if (amountInINR >= 1499) {
@@ -367,10 +621,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             },
             prefill: {
+                name: userName,
                 email: userEmail
             },
             notes: {
-                plan: planName
+                plan: planName,
+                company: userCompany
             },
             theme: {
                 color: "#6E2CF4" // Violet Theme Accent
@@ -385,13 +641,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Attach Click Event Handlers to PDF Invoice & Letter Download Buttons
+    const btnDownloadInvoice = document.getElementById('btn-download-invoice');
+    const btnDownloadLetter = document.getElementById('btn-download-letter');
+
+    if (btnDownloadInvoice) {
+        btnDownloadInvoice.addEventListener('click', () => {
+            generateCustomInvoicePDF(lastOrderDetails);
+        });
+    }
+
+    if (btnDownloadLetter) {
+        btnDownloadLetter.addEventListener('click', () => {
+            generateAppreciationLetterPDF(lastOrderDetails);
+        });
+    }
+
     // Checkout Triggers
     const checkoutTriggers = document.querySelectorAll('.checkout-trigger');
     const checkoutTierTitle = document.getElementById('checkout-tier-title');
     const summaryTierName = document.getElementById('summary-tier-name');
     const summaryTierPrice = document.getElementById('summary-tier-price');
     const checkoutForm = document.getElementById('checkout-form');
+    const userNameInput = document.getElementById('user-name-input');
     const userEmailInput = document.getElementById('user-email-input');
+    const userCompanyInput = document.getElementById('user-company-input');
 
     let selectedPlanName = "Complete Bundle";
     let selectedPlanPrice = 1499;
@@ -426,8 +700,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const email = userEmailInput ? userEmailInput.value.trim() : "";
-            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice, email);
+            const name = userNameInput ? userNameInput.value.trim() : "Valued Builder";
+            const email = userEmailInput ? userEmailInput.value.trim() : "builder@aixproduct.com";
+            const company = userCompanyInput ? userCompanyInput.value.trim() : "Individual Practitioner";
+            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice, email, name, company);
         });
     }
 
