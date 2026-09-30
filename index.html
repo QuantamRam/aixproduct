@@ -1164,6 +1164,59 @@
         </div>
     </div>
 
+    <!-- MODAL 3: PAYMENT SUCCESS & INSTANT DOWNLOAD MODAL -->
+    <div class="modal-overlay" id="download-success-modal">
+        <div class="modal-content modal-medium">
+            <div class="modal-header">
+                <div>
+                    <span class="badge badge-purple" style="background:#ECFDF5; color:#065F46;">PAYMENT CONFIRMED ✓</span>
+                    <h3 id="success-plan-title">Your Download Is Ready!</h3>
+                </div>
+                <button class="modal-close" id="close-success-modal">&times;</button>
+            </div>
+            <div class="modal-body" style="text-align: center;">
+                <div style="font-size: 3rem; margin-bottom: 12px;">🎉</div>
+                <h2 style="font-size: 1.6rem; font-weight: 800; color: var(--text-primary); margin-bottom: 8px;">
+                    Thank You for Your Order!
+                </h2>
+                <p style="color: var(--text-secondary); margin-bottom: 20px; font-size: 0.95rem;">
+                    Payment Transaction ID: <strong id="success-tx-id" style="color: var(--violet-primary);">rzp_test_sample</strong>
+                </p>
+
+                <div class="checkout-summary" style="text-align: left; margin-bottom: 24px;">
+                    <div class="summary-line">
+                        <span id="success-tier-name">Digital Playbook (₹999)</span>
+                        <span style="color:#10B981; font-weight:800;">PAID ✓</span>
+                    </div>
+                    <div class="summary-includes" id="success-includes-list">
+                        ✓ The Full 59-Page Playbook (PDF & EPUB)<br>
+                        ✓ One-Page AI Product Brief Template<br>
+                        ✓ Lifetime Digital Updates & Revisions
+                    </div>
+                </div>
+
+                <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                    <a href="assets/The_AI_PM_Playbook.pdf" download="Building_AI_Products_That_Ship_Playbook.pdf" class="btn btn-primary btn-full btn-lg" id="btn-download-pdf">
+                        <i data-lucide="download"></i>
+                        <span>Download Playbook (PDF) &rarr;</span>
+                    </a>
+                    <a href="assets/The_AI_PM_Playbook.pdf" download="Building_AI_Products_That_Ship_Playbook.epub" class="btn btn-secondary btn-full" id="btn-download-epub">
+                        <i data-lucide="file-text"></i>
+                        <span>Download EPUB (eReader)</span>
+                    </a>
+                    <a href="https://notion.so" target="_blank" class="btn btn-outline btn-full" id="btn-open-templates" style="display:none;">
+                        <i data-lucide="layout"></i>
+                        <span>Access Notion & Sheet Templates &rarr;</span>
+                    </a>
+                </div>
+
+                <p style="font-size: 0.8rem; color: var(--text-muted);">
+                    <i data-lucide="lock"></i> Instant DRM-Free Download &bull; Receipt sent to your email.
+                </p>
+            </div>
+        </div>
+    </div>
+
     <!-- LIVE SOCIAL PROOF TOAST NOTIFICATION -->
     <div class="proof-toast" id="proof-toast">
         <div class="toast-avatar" id="toast-avatar">RC</div>

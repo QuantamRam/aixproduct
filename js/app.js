@@ -335,8 +335,36 @@ document.addEventListener('DOMContentLoaded', () => {
             description: `Building AI Products That Ship — ${planName}`,
             image: "assets/book_cover.jpg",
             handler: function (response) {
-                alert(`🎉 Payment Successful!\n\nTransaction ID: ${response.razorpay_payment_id}\n\nThank you for purchasing ${planName}! Your Playbook PDF, EPUB, and Notion workspace templates have been unlocked.`);
+                // Close checkout modal if active
                 if (checkoutModal) checkoutModal.classList.remove('active');
+                
+                // Populate & Open Instant Download Modal
+                const downloadSuccessModal = document.getElementById('download-success-modal');
+                const successTxId = document.getElementById('success-tx-id');
+                const successTierName = document.getElementById('success-tier-name');
+                const btnOpenTemplates = document.getElementById('btn-open-templates');
+                const closeSuccessModal = document.getElementById('close-success-modal');
+
+                if (successTxId) successTxId.textContent = response.razorpay_payment_id || "rzp_test_success";
+                if (successTierName) successTierName.textContent = `${planName} (₹${amountInINR})`;
+
+                if (btnOpenTemplates) {
+                    if (amountInINR >= 1499) {
+                        btnOpenTemplates.style.display = "inline-flex";
+                    } else {
+                        btnOpenTemplates.style.display = "none";
+                    }
+                }
+
+                if (downloadSuccessModal) {
+                    downloadSuccessModal.classList.add('active');
+                }
+
+                if (closeSuccessModal) {
+                    closeSuccessModal.addEventListener('click', () => {
+                        downloadSuccessModal.classList.remove('active');
+                    });
+                }
             },
             prefill: {
                 email: userEmail
