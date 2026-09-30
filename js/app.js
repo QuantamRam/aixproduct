@@ -324,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // --------------------------------------------------------------------------
     const RAZORPAY_KEY_ID = "rzp_test_TiD5dvVULwYEcg";
 
-    function launchRazorpayCheckout(planName, amountInINR) {
+    function launchRazorpayCheckout(planName, amountInINR, userEmail = "") {
         const amountInPaise = amountInINR * 100;
         
         const options = {
@@ -339,8 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (checkoutModal) checkoutModal.classList.remove('active');
             },
             prefill: {
-                name: "",
-                email: ""
+                email: userEmail
             },
             notes: {
                 plan: planName
@@ -354,7 +353,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const rzp = new window.Razorpay(options);
             rzp.open();
         } else {
-            alert("Razorpay payment gateway loading. Please try again in a moment.");
+            alert("Razorpay SDK is loading. Please try again in a moment.");
         }
     }
 
@@ -364,6 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const summaryTierName = document.getElementById('summary-tier-name');
     const summaryTierPrice = document.getElementById('summary-tier-price');
     const checkoutForm = document.getElementById('checkout-form');
+    const userEmailInput = document.getElementById('user-email-input');
 
     let selectedPlanName = "Complete Bundle";
     let selectedPlanPrice = 1499;
@@ -390,15 +390,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 selectedPlanPrice = 999;
             }
 
-            // Launch Razorpay directly for instant checkout
-            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice);
+            // Open Checkout Modal
+            if (checkoutModal) checkoutModal.classList.add('active');
         });
     });
 
     if (checkoutForm) {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice);
+            const email = userEmailInput ? userEmailInput.value.trim() : "";
+            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice, email);
         });
     }
 

@@ -1125,7 +1125,7 @@
                 <button class="modal-close" id="close-checkout-modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form id="checkout-form" onsubmit="event.preventDefault(); alert('Demo Order Received! In production, this connects to Stripe/LemonSqueezy Checkout.'); document.getElementById('checkout-modal').classList.remove('active');">
+                <form id="checkout-form">
                     <div class="checkout-summary">
                         <div class="summary-line">
                             <span id="summary-tier-name">Complete Bundle</span>
@@ -1140,17 +1140,17 @@
 
                     <div class="form-group">
                         <label>Your Email Address (for instant delivery):</label>
-                        <input type="email" required placeholder="alex@company.com">
+                        <input type="email" id="user-email-input" required placeholder="alex@company.com">
                     </div>
 
                     <div class="form-group">
-                        <label>Payment Method:</label>
+                        <label>Payment Gateway (Powered by Razorpay):</label>
                         <div class="payment-options">
                             <label class="pay-option active">
-                                <input type="radio" name="pay" checked> Card (Stripe)
+                                <input type="radio" name="pay" checked> UPI (GPay / PhonePe / Paytm)
                             </label>
-                            <label class="pay-option">
-                                <input type="radio" name="pay"> Apple Pay / Google Pay / UPI
+                            <label class="pay-option active">
+                                <input type="radio" name="pay" checked> Card / Netbanking / Wallet
                             </label>
                         </div>
                     </div>
