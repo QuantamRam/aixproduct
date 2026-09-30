@@ -319,11 +319,54 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --------------------------------------------------------------------------
+    // 6. RAZORPAY PAYMENT GATEWAY INTEGRATION
+    // --------------------------------------------------------------------------
+    const RAZORPAY_KEY_ID = "rzp_test_TiD5dvVULwYEcg";
+
+    function launchRazorpayCheckout(planName, amountInINR) {
+        const amountInPaise = amountInINR * 100;
+        
+        const options = {
+            key: RAZORPAY_KEY_ID,
+            amount: amountInPaise,
+            currency: "INR",
+            name: "AI x PRODUCT",
+            description: `Building AI Products That Ship — ${planName}`,
+            image: "assets/book_cover.jpg",
+            handler: function (response) {
+                alert(`🎉 Payment Successful!\n\nTransaction ID: ${response.razorpay_payment_id}\n\nThank you for purchasing ${planName}! Your Playbook PDF, EPUB, and Notion workspace templates have been unlocked.`);
+                if (checkoutModal) checkoutModal.classList.remove('active');
+            },
+            prefill: {
+                name: "",
+                email: ""
+            },
+            notes: {
+                plan: planName
+            },
+            theme: {
+                color: "#6E2CF4" // Violet Theme Accent
+            }
+        };
+
+        if (window.Razorpay) {
+            const rzp = new window.Razorpay(options);
+            rzp.open();
+        } else {
+            alert("Razorpay payment gateway loading. Please try again in a moment.");
+        }
+    }
+
     // Checkout Triggers
     const checkoutTriggers = document.querySelectorAll('.checkout-trigger');
     const checkoutTierTitle = document.getElementById('checkout-tier-title');
     const summaryTierName = document.getElementById('summary-tier-name');
     const summaryTierPrice = document.getElementById('summary-tier-price');
+    const checkoutForm = document.getElementById('checkout-form');
+
+    let selectedPlanName = "Complete Bundle";
+    let selectedPlanPrice = 1499;
 
     checkoutTriggers.forEach(btn => {
         btn.addEventListener('click', (e) => {
@@ -332,17 +375,32 @@ document.addEventListener('DOMContentLoaded', () => {
             
             checkoutTierTitle.textContent = `Order: ${tierStr}`;
             summaryTierName.textContent = tierStr.split('(')[0].trim();
+            
             if (tierStr.includes('1,499')) {
                 summaryTierPrice.textContent = '₹1,499 ($18 USD)';
+                selectedPlanName = "Complete Bundle";
+                selectedPlanPrice = 1499;
             } else if (tierStr.includes('4,999')) {
                 summaryTierPrice.textContent = '₹4,999 ($59 USD)';
+                selectedPlanName = "Team License";
+                selectedPlanPrice = 4999;
             } else {
                 summaryTierPrice.textContent = '₹999 ($12 USD)';
+                selectedPlanName = "Digital Playbook";
+                selectedPlanPrice = 999;
             }
 
-            checkoutModal.classList.add('active');
+            // Launch Razorpay directly for instant checkout
+            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice);
         });
     });
+
+    if (checkoutForm) {
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            launchRazorpayCheckout(selectedPlanName, selectedPlanPrice);
+        });
+    }
 
     if (closeCheckoutModal) {
         closeCheckoutModal.addEventListener('click', () => {
