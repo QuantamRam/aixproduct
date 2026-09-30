@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stop Shipping Flaky AI Demos: The AI PM Playbook by Ram Chandar Sanaboyina</title>
+    <meta name="description" content="The battle-tested playbook for founders, PMs, and builders to turn 48-hour AI prototypes into high-margin, zero-hallucination products that users actually pay for.">
+    <meta name="keywords" content="AI PM, AI Product Management, Building AI Products, RAG, Evals, AI Economics, Vibe Coding, Ram Chandar Sanaboyina, AI Copywriting">
+    
+    <!-- Open Graph / Meta -->
+    <meta property="og:title" content="Stop Shipping Flaky AI Demos: The AI PM Playbook">
+    <meta property="og:description" content="Turn AI demos into profitable, production-ready products people actually pay for.">
+    <meta property="og:image" content="assets/book_cover.jpg">
+
+    <!-- Fonts: Outfit (Headings) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Feather Icons / Lucide SVG Support -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="container announcement-content">
+            <span class="badge badge-purple">2026 EDITION</span>
+            <span class="announcement-text">⚡ NEW: Includes battle-tested frameworks for Agentic Loops, MCP Architecture, & Automated Evals Harnesses.</span>
+            <a href="#pricing" class="announcement-link">Claim Your Copy & Templates &rarr;</a>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="site-header" id="header">
+        <div class="container header-container">
+            <a href="#" class="brand-logo">
+                <div class="logo-accent-line"></div>
+                <span class="logo-title">AI <span class="text-violet">x</span> PRODUCT</span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#staircase">Framework</a>
+                <a href="#chapters">Contents</a>
+                <a href="#matrix-tool">Decision Matrix</a>
+                <a href="#calculator">Token Calculator</a>
+                <a href="#author">Author</a>
+                <a href="#pricing">Pricing</a>
+            </nav>
+
+            <div class="header-actions">
+                <button class="btn btn-outline-sm" id="btn-open-sample-nav">Preview Chapter 1 Free</button>
+                <a href="#pricing" class="btn btn-primary-sm">Get Playbook — ₹999</a>
+            </div>
+
+            <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-bg-grid"></div>
+        <div class="container hero-container">
+            <div class="hero-grid">
+                
+                <!-- Hero Left: Content -->
+                <div class="hero-content">
+                    <div class="hero-pill">
+                        <span class="pulse-dot"></span>
+                        <span>THE BATTLE-TESTED AI PRODUCT PLAYBOOK · BY RAM CHANDAR SANABOYINA</span>
+                    </div>
+
+                    <h1 class="hero-title">
+                        Stop Shipping Flaky AI Demos. <span class="highlight-violet">Build AI Products That People Actually Pay For.</span>
+                    </h1>
+
+                    <p class="hero-subtitle">
+                        The exact 4-phase system for founders, PMs, and engineering leads to turn unpredictable LLM prompts into battle-hardened, high-margin software in 30 days—without bleeding token budget or shipping hallucinatory junk.
+                    </p>
+
+                    <div class="hero-features-list">
+                        <div class="hero-feature-item">
+                            <div class="icon-box-violet"><i data-lucide="check"></i></div>
+                            <span>Kill the "Demo Trap": Stop launching gimmick AI features that get abandoned in 6 weeks</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="icon-box-violet"><i data-lucide="check"></i></div>
+                            <span>The <strong>LoCuS Stack Protocol (p. 17)</strong>: Ship full-stack, clickable AI prototypes in under 48 hours</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="icon-box-violet"><i data-lucide="check"></i></div>
+                            <span>Automated <strong>Evals Harness (p. 29)</strong>: Catch model hallucinations before your paying users do</span>
+                        </div>
+                        <div class="hero-feature-item">
+                            <div class="icon-box-violet"><i data-lucide="check"></i></div>
+                            <span>Token Economics Formula (p. 34): Slash API bills by 70% while keeping margins above 80%</span>
+                        </div>
+                    </div>
+
+                    <div class="hero-cta-group">
+                        <a href="#pricing" class="btn btn-primary btn-lg">
+                            <span>Get The Complete Playbook — ₹999</span>
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <button class="btn btn-secondary btn-lg" id="btn-open-sample">
+                            <i data-lucide="book-open"></i>
+                            <span>Read Free Sample Chapter</span>
+                        </button>
+                    </div>
+
+                    <!-- Proof Line -->
+                    <div class="hero-proof">
+                        <div class="rating-stars">
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <i data-lucide="star" class="star-filled"></i>
+                            <span class="rating-score">4.9/5</span>
+                        </div>
+                        <p class="proof-text">
+                            Trusted by <strong>2,400+ AI PMs, Founders & Tech Leads</strong> across OpenAI, Anthropic, Vercel, Stripe, and top Indian tech startups.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Hero Right: 3D Interactive Book Showcase -->
+                <div class="hero-visual">
+                    <div class="book-3d-wrapper" id="book-3d-container">
+                        <div class="book-glow-effect"></div>
+                        <img src="assets/book_cover.jpg" alt="Building AI Products That Ship Book Cover" class="book-3d-image">
+                        
+                        <!-- Floating Badge 1 -->
+                        <div class="floating-card float-top-right">
+                            <div class="float-icon-box bg-purple"><i data-lucide="layers"></i></div>
+                            <div>
+                                <div class="float-title">4-Stage Framework</div>
+                                <div class="float-sub">Concept to 80%+ Margins</div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge 2 -->
+                        <div class="floating-card float-bottom-left">
+                            <div class="float-icon-box bg-purple-tint"><i data-lucide="shield-check" class="icon-violet"></i></div>
+                            <div>
+                                <div class="float-title">Automated Evals Harness</div>
+                                <div class="float-sub">Zero-Hallucination Production</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROOF STRIP / LOGO MARQUEE -->
+    <section class="logos-section">
+        <div class="container">
+            <p class="logos-title">USED BY AI PRODUCT LEADERS & FOUNDERS BUILDING AT TOP TECH COMPANIES</p>
+            <div class="logo-grid">
+                <div class="logo-item">OpenAI</div>
+                <div class="logo-item">Anthropic</div>
+                <div class="logo-item">Vercel</div>
+                <div class="logo-item">Stripe</div>
+                <div class="logo-item">Supabase</div>
+                <div class="logo-item">Linear</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROBLEM VS SOLUTION SECTION -->
+    <section class="problem-section" id="problem">
+        <div class="container">
+            <div class="section-header center">
+                <div class="top-line-accent"></div>
+                <h2 class="section-title">Why 92% of AI Features <span class="highlight-violet">Die in Production (And How You Win).</span></h2>
+                <p class="section-subtitle">
+                    Traditional software rules break when code becomes probabilistic. Here is why weekend prototypes collapse under real load—and how system orchestrators build durable AI moats.
+                </p>
+            </div>
+
+            <div class="problem-solution-grid">
+                
+                <!-- Card 1: The Problem (Light Purple Tint Card) -->
+                <div class="light-tint-card">
+                    <div class="card-tag tag-red">THE DEMO TRAP</div>
+                    <h3 class="card-title-dark">The "Weekend Demo" Illusion</h3>
+                    <p class="card-text-dark">
+                        A developer builds a slick prototype over a weekend. It wows executives in internal slide decks. But the moment real customers log in, the model hallucinates wildly, response latency hits 14 agonizing seconds, and your monthly LLM API invoice costs 3x more than user subscription revenue.
+                    </p>
+                    <ul class="light-list">
+                        <li><i data-lucide="x-circle" class="icon-red"></i> <strong>Probabilistic outputs</strong> break traditional QA—making bugs untraceable without custom evals.</li>
+                        <li><i data-lucide="x-circle" class="icon-red"></i> <strong>Power users bleed margins</strong> by triggering un-capped agent loops on flat subscription tiers.</li>
+                        <li><i data-lucide="x-circle" class="icon-red"></i> <strong>"Sticker AI" buttons</strong> get jammed into sidebars, creating user confusion instead of actual retention.</li>
+                    </ul>
+                </div>
+
+                <!-- Card 2: The Solution (White Card with Violet Accent) -->
+                <div class="white-block-card highlight-border">
+                    <div class="card-tag tag-violet">THE UNIQUE MECHANISM</div>
+                    <h3 class="card-title-dark">The System Orchestrator Framework</h3>
+                    <p class="card-text-dark">
+                        This playbook eliminates the trial-and-error gap between a toy prompt and a high-converting, enterprise-ready AI product. Instead of guessing, you get a step-by-step engineering and product blueprint built specifically for non-deterministic AI software.
+                    </p>
+                    <ul class="light-list">
+                        <li><i data-lucide="check-circle-2" class="icon-violet"></i> <strong>3-Tier Opportunity Matrix:</strong> Filter out empty hype and pinpoint high-ROI AI opportunities.</li>
+                        <li><i data-lucide="check-circle-2" class="icon-violet"></i> <strong>The LoCuS Stack Protocol:</strong> Move from raw concept to clickable user testing in under 48 hours.</li>
+                        <li><i data-lucide="check-circle-2" class="icon-violet"></i> <strong>Golden Dataset Eval Harness:</strong> Automate LLM-as-a-Judge gates so hallucinations never reach prod.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- THE 4-PHASE STAIRCASE FRAMEWORK (INTERACTIVE) -->
+    <section class="staircase-section" id="staircase">
+        <div class="container">
+            <div class="section-header">
+                <div class="top-line-accent"></div>
+                <div class="section-label">THE CORE FRAMEWORK</div>
+                <h2 class="section-title">The 4-Stage <span class="highlight-violet">AI Shipping Staircase</span></h2>
+                <p class="section-subtitle">
+                    Four progressive milestones designed to take you from a raw napkin concept to a scalable, high-margin AI product. Click any step below to reveal the exact chapter strategies.
+                </p>
+            </div>
+
+            <!-- Interactive Isometric Staircase Graphic -->
+            <div class="staircase-interactive-container">
+                <div class="staircase-visual">
+                    
+                    <!-- Step 1: Idea -->
+                    <div class="stair-step-card step-1 active" data-step="1">
+                        <div class="step-num">01</div>
+                        <div class="step-block-3d">
+                            <div class="block-top"></div>
+                            <div class="block-front">
+                                <span class="step-label">IDEA</span>
+                            </div>
+                        </div>
+                        <div class="step-summary">Separate high-margin breakthroughs from costly gimmicks using the Decision Quality Matrix.</div>
+                    </div>
+
+                    <!-- Step 2: Prototype -->
+                    <div class="stair-step-card step-2" data-step="2">
+                        <div class="step-num">02</div>
+                        <div class="step-block-3d">
+                            <div class="block-top"></div>
+                            <div class="block-front">
+                                <span class="step-label">PROTOTYPE</span>
+                            </div>
+                        </div>
+                        <div class="step-summary">Vibe-code full-stack prototypes in under 48 hours using the battle-tested LoCuS Stack.</div>
+                    </div>
+
+                    <!-- Step 3: Product -->
+                    <div class="stair-step-card step-3" data-step="3">
+                        <div class="step-num">03</div>
+                        <div class="step-block-3d">
+                            <div class="block-top"></div>
+                            <div class="block-front">
+                                <span class="step-label">PRODUCT</span>
+                            </div>
+                        </div>
+                        <div class="step-summary">Lock down production parity with automated eval harnesses, guardrails, and token routing.</div>
+                    </div>
+
+                    <!-- Step 4: Users & Impact -->
+                    <div class="stair-step-card step-4" data-step="4">
+                        <div class="step-num">04</div>
+                        <div class="step-block-3d">
+                            <div class="block-top"></div>
+                            <div class="block-front">
+                                <span class="step-label">SCALE & IMPACT</span>
+                            </div>
+                        </div>
+                        <div class="step-summary">Master UX for non-happy states, build data flywheels, and enforce 80%+ profit margins.</div>
+                    </div>
+
+                </div>
+
+                <!-- Staircase Step Detailed Drawer -->
+                <div class="stair-details-box" id="stair-details">
+                    <div class="stair-details-header">
+                        <span class="badge badge-purple" id="detail-phase-badge">PHASE 1 OF 4</span>
+                        <h3 id="detail-title">Phase 1: Idea & Model-Product Fit</h3>
+                    </div>
+                    <p class="stair-details-desc" id="detail-desc">
+                        When building gets cheap, judgment gets expensive. Phase 1 teaches you how to shift from feature manager to system orchestrator, filter hype, and determine whether your idea is AI-Only, AI-Better, or AI-Optional.
+                    </p>
+                    <div class="detail-key-takeaways">
+                        <h4>Key Frameworks in this Phase:</h4>
+                        <div class="frameworks-list" id="detail-frameworks">
+                            <div class="fw-chip"><i data-lucide="grid"></i> The Decision Quality Matrix</div>
+                            <div class="fw-chip"><i data-lucide="layers"></i> The 3-Tier AI Opportunity Model</div>
+                            <div class="fw-chip"><i data-lucide="git-branch"></i> Build vs Buy vs Fine-Tune Ladder</div>
+                        </div>
+                    </div>
+                    <div class="stair-details-footer">
+                        <span class="ch-reading-time"><i data-lucide="clock"></i> Chapters 1–2 · Pages 6–15</span>
+                        <button class="btn btn-outline-sm" id="btn-read-phase-sample">Preview Chapters &rarr;</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TOOL 1: DECISION QUALITY MATRIX (LIGHT THEMED) -->
+    <section class="tool-section" id="matrix-tool">
+        <div class="container">
+            <div class="light-block-container">
+                <div class="light-container-header">
+                    <div class="badge badge-purple">INTERACTIVE PLAYBOOK TOOL</div>
+                    <h2 class="title-dark">Try Framework #1: <span class="highlight-violet">The Decision Quality Matrix</span></h2>
+                    <p class="text-muted-dark">
+                        Plot your AI feature concept on value vs buildability to immediately reveal whether you should Invest, Ship, Ignore, or Kill it on purpose.
+                    </p>
+                </div>
+
+                <div class="matrix-simulator-grid">
+                    
+                    <!-- Controls -->
+                    <div class="matrix-controls-light">
+                        <div class="form-group">
+                            <label for="feature-name-input">AI Feature Concept Name:</label>
+                            <input type="text" id="feature-name-input" placeholder="e.g., AI PDF Summarizer Button" value="Smart AI Support Auto-Responder">
+                        </div>
+
+                        <div class="form-group">
+                            <div class="slider-header">
+                                <label for="value-slider">Perceived Value to User:</label>
+                                <span class="slider-val" id="value-display">High (8/10)</span>
+                            </div>
+                            <input type="range" id="value-slider" min="1" max="10" value="8">
+                            <div class="slider-labels">
+                                <span>Low Value</span>
+                                <span>High Value</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="slider-header">
+                                <label for="ease-slider">Ease to Build (Prompt Simplicity):</label>
+                                <span class="slider-val" id="ease-display">Easy (8/10)</span>
+                            </div>
+                            <input type="range" id="ease-slider" min="1" max="10" value="8">
+                            <div class="slider-labels">
+                                <span>Hard / Custom Engine</span>
+                                <span>Easy (1-day prompt)</span>
+                            </div>
+                        </div>
+
+                        <div class="matrix-verdict-box" id="matrix-verdict">
+                            <div class="verdict-tag" id="verdict-tag">SHIP IT</div>
+                            <div class="verdict-title" id="verdict-title">Valuable & Fast to Build</div>
+                            <p class="verdict-desc" id="verdict-desc">
+                                Do it now! AI makes this fast. Measure quality pass rates, set guardrails, and track cost per task.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Interactive 2x2 Quadrant Display (Light Background) -->
+                    <div class="matrix-grid-display-light">
+                        <div class="quadrant-light quad-invest" id="quad-invest">
+                            <div class="quad-label-dark">INVEST</div>
+                            <div class="quad-sub-dark">Hard, but creates your primary competitive moat.</div>
+                        </div>
+
+                        <div class="quadrant-light quad-ship active-quad" id="quad-ship">
+                            <div class="quad-label-dark">SHIP IT</div>
+                            <div class="quad-sub-dark">High value & fast build. Launch with evals immediately.</div>
+                        </div>
+
+                        <div class="quadrant-light quad-ignore" id="quad-ignore">
+                            <div class="quad-label-dark">IGNORE</div>
+                            <div class="quad-sub-dark">Low value & complex. Zero ROI distractor.</div>
+                        </div>
+
+                        <div class="quadrant-light quad-kill" id="quad-kill">
+                            <div class="quad-label-dark">KILL ON PURPOSE</div>
+                            <div class="quad-sub-dark">The Demo Trap! Easy to build, completely pointless.</div>
+                        </div>
+
+                        <!-- Active Plot Pin -->
+                        <div class="matrix-pin" id="matrix-pin" style="left: 80%; top: 20%;">
+                            <div class="pin-pulse"></div>
+                            <span class="pin-text" id="pin-label">Your Feature</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE TOOL 2: TOKEN BUDGET & ECONOMICS CALCULATOR -->
+    <section class="calculator-section" id="calculator">
+        <div class="container">
+            <div class="section-header">
+                <div class="top-line-accent"></div>
+                <div class="section-label">CHAPTER 6 ECONOMICS TOOL</div>
+                <h2 class="section-title">The AI Unit Economics <span class="highlight-violet">Calculator</span></h2>
+                <p class="section-subtitle">
+                    Calculate your exact cost per completed task and identify if power users will drain your subscription profit margins.
+                </p>
+            </div>
+
+            <div class="calc-card-container">
+                <div class="calc-grid">
+                    
+                    <!-- Calc Inputs -->
+                    <div class="calc-inputs">
+                        <h3>1. Model & Token Parameters</h3>
+                        
+                        <div class="form-group">
+                            <label>Model Tier:</label>
+                            <select id="calc-model-select">
+                                <option value="flagship">Flagship Model ($3.00 / 1M in, $15.00 / 1M out)</option>
+                                <option value="midtier" selected>Mid-Tier Model ($0.50 / 1M in, $2.00 / 1M out)</option>
+                                <option value="small">Small / Flash Model ($0.15 / 1M in, $0.60 / 1M out)</option>
+                            </select>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Input Tokens / Task:</label>
+                                <input type="number" id="calc-input-tokens" value="3000">
+                            </div>
+                            <div class="form-group">
+                                <label>Output Tokens / Task:</label>
+                                <input type="number" id="calc-output-tokens" value="500">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Agent LLM Calls / Task:</label>
+                            <input type="number" id="calc-calls-per-task" value="2" min="1" max="20">
+                            <small class="field-hint">Multi-step agent loops multiply token costs by total iterations!</small>
+                        </div>
+
+                        <h3 class="margin-top-sm">2. Pricing Plan Comparison</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Monthly User Subscription (₹ / $):</label>
+                                <input type="number" id="calc-sub-price" value="2499">
+                            </div>
+                            <div class="form-group">
+                                <label>Power User Tasks / Mo:</label>
+                                <input type="number" id="calc-power-tasks" value="2500">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Calc Results -->
+                    <div class="calc-results-box">
+                        <div class="result-header">Unit Economics Breakdown</div>
+                        
+                        <div class="metric-big-box">
+                            <div class="metric-label">COST PER TASK</div>
+                            <div class="metric-value-violet" id="res-cost-per-task">$0.0050</div>
+                            <div class="metric-sub" id="res-cost-sub">0.5 cents per request</div>
+                        </div>
+
+                        <div class="calc-metrics-grid">
+                            <div class="mini-metric">
+                                <span class="mini-title">Average User (200 tasks/mo)</span>
+                                <span class="mini-val text-green" id="res-avg-user">$1.00 cost &bull; 96.7% Margin</span>
+                            </div>
+                            <div class="mini-metric">
+                                <span class="mini-title">Power User (<span id="res-power-count">2,500</span> tasks/mo)</span>
+                                <span class="mini-val" id="res-power-user">$12.50 cost &bull; 58.3% Margin</span>
+                            </div>
+                        </div>
+
+                        <div class="calc-alert-box" id="calc-alert-box">
+                            <i data-lucide="check-circle" class="icon-green" id="calc-alert-icon"></i>
+                            <div id="calc-alert-text">
+                                <strong>Healthy Margins:</strong> Your subscription fee easily covers power user consumption.
+                            </div>
+                        </div>
+
+                        <div class="calc-tip">
+                            <strong>Chapter 6 Tip (p. 36):</strong> Use difficulty routing & prompt caching to cut costs by up to 70% without sacrificing response accuracy.
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FULL TABLE OF CONTENTS & CHAPTER DIRECTORY -->
+    <section class="chapters-section" id="chapters">
+        <div class="container">
+            <div class="section-header">
+                <div class="top-line-accent"></div>
+                <div class="section-label">COMPLETE TABLE OF CONTENTS</div>
+                <h2 class="section-title">What's Inside <span class="highlight-violet">The Playbook</span></h2>
+                <p class="section-subtitle">
+                    59 pages of condensed, zero-fluff frameworks, downloadable spreadsheets, real-world case studies, and step-by-step checklists.
+                </p>
+            </div>
+
+            <!-- Chapter Search & Filter -->
+            <div class="chapter-search-container">
+                <i data-lucide="search" class="chapter-search-icon"></i>
+                <input type="text" id="chapter-search-input" class="chapter-search-input" placeholder="Search chapters by keyword (e.g. Evals, RAG, Token Budget, UX, Pricing)...">
+            </div>
+
+            <!-- Phase Tabs -->
+            <div class="phase-tabs">
+                <button class="phase-tab-btn active" data-phase-filter="all">All Phases</button>
+                <button class="phase-tab-btn" data-phase-filter="phase1">01 Idea</button>
+                <button class="phase-tab-btn" data-phase-filter="phase2">02 Prototype</button>
+                <button class="phase-tab-btn" data-phase-filter="phase3">03 Product</button>
+                <button class="phase-tab-btn" data-phase-filter="phase4">04 Scale & Impact</button>
+            </div>
+
+            <!-- Chapter Grid -->
+            <div class="chapter-cards-grid">
+                
+                <!-- Ch 1 -->
+                <div class="chapter-card" data-phase="phase1">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 1 · IDEA</span>
+                        <span class="ch-page">P. 6</span>
+                    </div>
+                    <h3 class="ch-title">01. The AI-Native PM Mindset</h3>
+                    <p class="ch-sub">From feature manager to system orchestrator</p>
+                    <p class="ch-desc">
+                        When building gets cheap, judgment gets expensive. Learn why engineering capacity is no longer the bottleneck and how to move from manager of timelines to conductor of models, rules, and human trust.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>Framework: Decision Quality Matrix</span>
+                        <span>The Rule of the Kill List</span>
+                    </div>
+                </div>
+
+                <!-- Ch 2 -->
+                <div class="chapter-card" data-phase="phase1">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 1 · IDEA</span>
+                        <span class="ch-page">P. 11</span>
+                    </div>
+                    <h3 class="ch-title">02. Mapping Model-Product Fit</h3>
+                    <p class="ch-sub">Eliminating hype to find real product leverage</p>
+                    <p class="ch-desc">
+                        Run the "Remove the AI" stress-test. Discover the 3-Tier AI Opportunity framework (AI-Only, AI-Better, AI-Optional) and navigate the Build vs Buy vs Fine-Tune decision ladder.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>3-Tier Opportunity Framework</span>
+                        <span>20-Example Playground Test</span>
+                    </div>
+                </div>
+
+                <!-- Ch 3 -->
+                <div class="chapter-card" data-phase="phase2">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 2 · PROTOTYPE</span>
+                        <span class="ch-page">P. 17</span>
+                    </div>
+                    <h3 class="ch-title">03. Vibe-Coding & Rapid Ideation</h3>
+                    <p class="ch-sub">Building clickable full-stack prototypes in 48 hours</p>
+                    <p class="ch-desc">
+                        Master Karpathy's vibe-coding methodology safely. Deploy the <strong>LoCuS Stack</strong> (Lovable for UI, Cursor for logic, Supabase for backend) to validate working prototypes with real users in under two days.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>The LoCuS Stack Playbook</span>
+                        <span>Rapid Validation Loop</span>
+                    </div>
+                </div>
+
+                <!-- Ch 4 -->
+                <div class="chapter-card" data-phase="phase2">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 2 · PROTOTYPE</span>
+                        <span class="ch-page">P. 22</span>
+                    </div>
+                    <h3 class="ch-title">04. Demystifying AI Architecture</h3>
+                    <p class="ch-sub">RAG, Agent Loops, and MCP for non-technical PMs</p>
+                    <p class="ch-desc">
+                        Zero math required. Understand token context budgets, vector databases, embeddings, Model Context Protocol (MCP), and safe autonomous agent loops under the hood.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>The Core AI Blueprint</span>
+                        <span>Safe Autonomy Loop Rules</span>
+                    </div>
+                </div>
+
+                <!-- Ch 5 -->
+                <div class="chapter-card" data-phase="phase3">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 3 · PRODUCT</span>
+                        <span class="ch-page">P. 29</span>
+                    </div>
+                    <h3 class="ch-title">05. Designing the AI Evaluation Harness</h3>
+                    <p class="ch-sub">Eliminating model hallucinations before production</p>
+                    <p class="ch-desc">
+                        Why traditional QA fails for probabilistic AI. Build a 30–50 example Golden Dataset, define quality rubrics (groundedness, safety, tone), and deploy automated LLM-as-a-Judge ship gates.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>The Evals Harness Framework</span>
+                        <span>LLM-as-a-Judge Rubrics</span>
+                    </div>
+                </div>
+
+                <!-- Ch 6 -->
+                <div class="chapter-card" data-phase="phase3">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 3 · PRODUCT</span>
+                        <span class="ch-page">P. 34</span>
+                    </div>
+                    <h3 class="ch-title">06. The AI Operations & Telemetry Stack</h3>
+                    <p class="ch-sub">Controlling latency, API costs, and observability</p>
+                    <p class="ch-desc">
+                        Manage speed, cost, and quality simultaneously. Build token budgets, deploy AI gateways, route prompts dynamically by difficulty, and log trace IDs before finance gets a surprise bill.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>Token Budget Spreadsheet</span>
+                        <span>Production Telemetry Dashboard</span>
+                    </div>
+                </div>
+
+                <!-- Ch 7 -->
+                <div class="chapter-card" data-phase="phase4">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 4 · USERS</span>
+                        <span class="ch-page">P. 41</span>
+                    </div>
+                    <h3 class="ch-title">07. UX Design for Uncertainty</h3>
+                    <p class="ch-sub">Building user trust and data flywheels</p>
+                    <p class="ch-desc">
+                        Guide users through probabilistic software. Master the 5 non-happy UX states (loading, empty, low-confidence, error, refused) and turn implicit user edits into competitive data flywheels.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>Trust & Transparency Matrix</span>
+                        <span>Implicit/Explicit Data Flywheel</span>
+                    </div>
+                </div>
+
+                <!-- Ch 8 -->
+                <div class="chapter-card" data-phase="phase4">
+                    <div class="ch-top">
+                        <span class="ch-badge">PHASE 4 · IMPACT</span>
+                        <span class="ch-page">P. 47</span>
+                    </div>
+                    <h3 class="ch-title">08. AI Product Economics & Monetization</h3>
+                    <p class="ch-sub">Monetization models, unit economics, and scale</p>
+                    <p class="ch-desc">
+                        Why flat seat-based pricing leads to financial loss with power users. Design value-based pricing, hybrid credit caps, and scale flywheels that increase gross margins as you grow.
+                    </p>
+                    <div class="ch-frameworks">
+                        <span>Value-Based Pricing Playbook</span>
+                        <span>The Scale Flywheel</span>
+                    </div>
+                </div>
+
+                <!-- Epilogue & Appendix -->
+                <div class="chapter-card full-width-card" data-phase="phase4">
+                    <div class="ch-top">
+                        <span class="ch-badge">EPILOGUE & APPENDIX</span>
+                        <span class="ch-page">P. 53–58</span>
+                    </div>
+                    <h3 class="ch-title">Your First 30 Days & The One-Page AI Product Brief</h3>
+                    <p class="ch-desc">
+                        A ready-to-use 4-week execution roadmap to turn this strategy into shipped code. Includes a plain-English AI glossary and a fillable 11-section AI Product Brief document.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- BUNDLE INCLUSIONS / WHAT YOU GET (LIGHT THEMED) -->
+    <section class="bundle-section-light">
+        <div class="container">
+            <div class="bundle-grid">
+                
+                <div class="bundle-visual">
+                    <img src="assets/bundle_mockup.jpg" alt="AI PM Playbook Bundle Assets" class="bundle-image">
+                </div>
+
+                <div class="bundle-content">
+                    <div class="badge badge-purple">COMPLETE TOOLKIT</div>
+                    <h2 class="section-title">Not just a book. <br>A <span class="highlight-violet">complete execution system.</span></h2>
+                    <p class="section-subtitle">
+                        When you get the Complete Playbook Bundle, you don't just get theory—you receive production-ready Notion templates, spreadsheets, and checklists you can clone immediately.
+                    </p>
+
+                    <div class="bundle-checklist">
+                        <div class="bundle-item">
+                            <div class="bundle-icon"><i data-lucide="file-text"></i></div>
+                            <div>
+                                <strong>The Full 59-Page Playbook (PDF + EPUB)</strong>
+                                <p>DRM-free ebook formatted for desktop, iPad, Kindle, and mobile reading.</p>
+                            </div>
+                        </div>
+
+                        <div class="bundle-item">
+                            <div class="bundle-icon"><i data-lucide="layout"></i></div>
+                            <div>
+                                <strong>The One-Page AI Product Brief (Notion & Doc)</strong>
+                                <p>Fillable 11-section framework to align your team before writing a single line of code.</p>
+                            </div>
+                        </div>
+
+                        <div class="bundle-item">
+                            <div class="bundle-icon"><i data-lucide="table"></i></div>
+                            <div>
+                                <strong>AI Evals Scorecard & Token Budget Spreadsheets</strong>
+                                <p>Pre-formulated sheets for calculating cost-per-task and automating LLM eval pass rates.</p>
+                            </div>
+                        </div>
+
+                        <div class="bundle-item">
+                            <div class="bundle-icon"><i data-lucide="check-square"></i></div>
+                            <div>
+                                <strong>The 30-Day AI Shipping Checklist</strong>
+                                <p>Step-by-step execution roadmap from initial idea validation to live telemetry setup.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- AUTHOR SECTION -->
+    <section class="author-section" id="author">
+        <div class="container">
+            <div class="author-card">
+                <div class="author-grid">
+                    
+                    <div class="author-bio-content">
+                        <div class="badge badge-purple">ABOUT THE AUTHOR</div>
+                        <h2 class="author-name">Ram Chandar Sanaboyina</h2>
+                        <p class="author-role">AI Product Leader & System Architect</p>
+                        
+                        <p class="author-text">
+                            "I wrote this playbook because I got tired of watching brilliant product teams build impressive AI demos over the weekend, only to see them implode in production six weeks later." 
+                        </p>
+                        <p class="author-text">
+                            "The core bottleneck in software creation has fundamentally shifted. Building got cheap, which means <strong>judgment got expensive</strong>. As product managers and builders, our job is no longer writing ticket backlogs—it is orchestrating complex systems of models, code, data, rules, and human trust."
+                        </p>
+
+                        <div class="author-stats">
+                            <div class="stat-box">
+                                <span class="stat-num">18+</span>
+                                <span class="stat-lbl">Actionable Frameworks</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-num">2,400+</span>
+                                <span class="stat-lbl">Playbook Readers</span>
+                            </div>
+                            <div class="stat-box">
+                                <span class="stat-num">50+</span>
+                                <span class="stat-lbl">AI Systems Shipped</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="author-quote-card">
+                        <div class="quote-icon">&ldquo;</div>
+                        <p class="quote-body">
+                            Small, shipped, measured, and improved beats big, perfect, and imagined.
+                        </p>
+                        <span class="quote-author">— Ram Chandar Sanaboyina</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS / REVIEWS -->
+    <section class="reviews-section">
+        <div class="container">
+            <div class="section-header center">
+                <div class="top-line-accent"></div>
+                <h2 class="section-title">Loved by <span class="highlight-violet">Builders & Product Leads</span></h2>
+                <p class="section-subtitle">Here is what practitioners say about implementing the AI PM Playbook.</p>
+            </div>
+
+            <div class="reviews-grid">
+                
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        "This is hands-down the most practical guide on AI product management I've read. The chapter on AI Evals saved our team from launching a hallucinatory customer support bot."
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="avatar-circle">AK</div>
+                        <div>
+                            <div class="reviewer-name">Alex Chen</div>
+                            <div class="reviewer-role">Senior PM at AI Startup</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        "The Token Budget spreadsheet formula alone is worth 100x the price of this book. We caught an edge-case agent loop that would have drained ₹3,00,000/mo!"
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="avatar-circle">MS</div>
+                        <div>
+                            <div class="reviewer-name">Maya Sharma</div>
+                            <div class="reviewer-role">Head of Product, SaaS Co</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="review-card">
+                    <div class="review-rating">★★★★★</div>
+                    <p class="review-text">
+                        "Finally! A book that skips the generic 'AI will change everything' hype and gives actual frameworks you can steal and use on Monday morning."
+                    </p>
+                    <div class="reviewer-info">
+                        <div class="avatar-circle">DJ</div>
+                        <div>
+                            <div class="reviewer-name">David Jenkins</div>
+                            <div class="reviewer-role">Founder & CTO</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PRICING SECTION (GOOD-BETTER-BEST) -->
+    <section class="pricing-section" id="pricing">
+        <div class="container">
+            <div class="section-header center">
+                <div class="top-line-accent"></div>
+                <div class="section-label">SIMPLE, TRANSPARENT PRICING</div>
+                <h2 class="section-title">Choose Your <span class="highlight-violet">Playbook Tier</span></h2>
+                <p class="section-subtitle">
+                    Instant digital delivery. Backed by our 100% 30-day money-back guarantee.
+                </p>
+            </div>
+
+            <div class="pricing-grid">
+                
+                <!-- Tier 1: Digital Book -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Digital Playbook</h3>
+                        <p class="plan-desc">For individual PMs & builders wanting the core playbook.</p>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">999</span>
+                            <span class="period">($12 USD)</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check" class="icon-violet"></i> The Complete 59-Page Book (PDF & EPUB)</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> Audio Summary Version (MP3)</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> The One-Page AI Brief Template</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> Lifetime Book Updates & Revisions</li>
+                    </ul>
+                    <button class="btn btn-outline btn-full checkout-trigger" data-tier="Digital Edition (₹999 / $12)">Get Digital Playbook — ₹999</button>
+                </div>
+
+                <!-- Tier 2: Complete Bundle (RECOMMENDED) -->
+                <div class="pricing-card featured-card">
+                    <div class="popular-ribbon">MOST POPULAR · BEST VALUE</div>
+                    <div class="plan-header">
+                        <h3 class="plan-name">Complete Bundle</h3>
+                        <p class="plan-desc">Book + 4 Notion Templates + Evals & Token Spreadsheets.</p>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">1,499</span>
+                            <span class="period">($18 USD)</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>Everything in Digital Playbook</strong></li>
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>4 Notion Template Workspaces</strong> (Brief, Kill List, Evals, Specs)</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>AI Evals Harness Google Sheet</strong> (Golden Dataset & Scorecard)</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>Token Budget & Unit Economics Calc</strong></li>
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>30-Day AI Shipping Checklist</strong></li>
+                    </ul>
+                    <button class="btn btn-primary btn-full checkout-trigger" data-tier="Complete Bundle (₹1,499 / $18)">Get Complete Bundle — ₹1,499 &rarr;</button>
+                </div>
+
+                <!-- Tier 3: Team & Enterprise -->
+                <div class="pricing-card">
+                    <div class="plan-header">
+                        <h3 class="plan-name">Team & Workshop</h3>
+                        <p class="plan-desc">For startup product teams & engineering leads.</p>
+                        <div class="plan-price">
+                            <span class="currency">₹</span>
+                            <span class="amount">4,999</span>
+                            <span class="period">($59 USD)</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i data-lucide="check" class="icon-violet"></i> <strong>Up to 10 Team Digital Licenses</strong></li>
+                        <li><i data-lucide="check" class="icon-violet"></i> Everything in Complete Bundle</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> Internal Workshop Team License</li>
+                        <li><i data-lucide="check" class="icon-violet"></i> Direct Email Q&A with Author</li>
+                    </ul>
+                    <button class="btn btn-outline btn-full checkout-trigger" data-tier="Team License (₹4,999 / $59)">Get Team License — ₹4,999</button>
+                </div>
+
+            </div>
+
+            <!-- Guarantee Box -->
+            <div class="guarantee-box">
+                <div class="guarantee-icon"><i data-lucide="shield-check"></i></div>
+                <div>
+                    <h4>100% 30-Day Risk-Free Guarantee</h4>
+                    <p>
+                        Read the playbook, implement the frameworks, and clone the spreadsheets. If you don't save at least 10 hours of wasted effort and prevent costly AI mistakes within 30 days, send a single email for a full, 100% refund. No hassle, no questions asked.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="section-header center">
+                <div class="top-line-accent"></div>
+                <h2 class="section-title">Frequently Asked <span class="highlight-violet">Questions</span></h2>
+                <p class="section-subtitle">Got questions? We've got answers.</p>
+            </div>
+
+            <div class="faq-accordion">
+                
+                <div class="faq-item active">
+                    <button class="faq-question">
+                        <span>Is this a coding book or a product book?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>It is a product and systems engineering book for builders. You do NOT need a computer science degree or machine learning background. You will learn concepts like <em>embeddings</em>, <em>tokens</em>, and <em>RAG</em>, but strictly to make high-ROI product, UX, and financial decisions on Monday morning.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What format will I receive the book in?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>You get instant digital access to DRM-free PDF and EPUB files suitable for Kindle, iPad, desktop, or mobile devices. The Complete Bundle also includes editable Notion templates and pre-formulated Google Sheets.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>How does this differ from generic AI PM articles online?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Most online articles offer high-level predictions like "AI will transform work". This playbook is written by a practitioner who has shipped 50+ production AI systems. It provides battle-tested decision matrices, eval rubrics, token calculators, and UX frameworks you can apply immediately.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>Can I buy this for my product or engineering team?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Yes! The Team & Workshop tier (₹4,999 / $59) covers up to 10 licenses and grants permission to use all templates in team planning workshops.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">
+                        <span>What if model technology changes next month?</span>
+                        <i data-lucide="chevron-down" class="faq-icon"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>While model prices and names update, foundational frameworks—such as Model-Product Fit, Evals Harnesses, Token Economics, and UX for Uncertainty—remain durable. Plus, all buyers receive free lifetime digital updates whenever new chapters are released.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA SECTION (LIGHT THEMED) -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="light-cta-box">
+                <h2 class="cta-title-dark">Ready to ship an AI product <br><span class="highlight-violet">that users actually pay for?</span></h2>
+                <p class="cta-sub-dark">
+                    Stop letting weekend demos die in product backlogs. Claim the frameworks, evals harness, and token economics tools right now.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#pricing" class="btn btn-primary btn-lg">Get the Playbook Now — ₹999 &rarr;</a>
+                    <button class="btn btn-secondary btn-lg" id="btn-open-sample-footer">Read Free Sample Chapter</button>
+                </div>
+                <div class="cta-guarantee-note-dark">
+                    <i data-lucide="lock" class="icon-violet"></i> Instant Download &bull; 30-Day 100% Money Back Guarantee &bull; Secure SSL Checkout
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <div class="footer-left">
+                <div class="brand-logo">
+                    <div class="logo-accent-line"></div>
+                    <span class="logo-title">AI <span class="text-violet">x</span> PRODUCT</span>
+                </div>
+                <p class="footer-desc">
+                    Building AI Products That Ship &copy; 2026 Ram Chandar Sanaboyina. All rights reserved.
+                </p>
+            </div>
+            <div class="footer-links">
+                <a href="#staircase">Framework</a>
+                <a href="#chapters">Contents</a>
+                <a href="#matrix-tool">Decision Matrix</a>
+                <a href="#calculator">Token Calculator</a>
+                <a href="#pricing">Pricing</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- STICKY BOTTOM BAR (LIGHT THEMED) -->
+    <div class="sticky-bar" id="sticky-bar">
+        <div class="container sticky-container">
+            <div class="sticky-info">
+                <img src="assets/book_cover.jpg" alt="Book Cover Mini" class="sticky-book-img">
+                <div>
+                    <div class="sticky-title">Building AI Products That Ship</div>
+                    <div class="sticky-sub">The AI PM Playbook by Ram Chandar Sanaboyina</div>
+                </div>
+            </div>
+            <div class="sticky-actions">
+                <span class="sticky-price">₹999 <s class="old-price">$12 USD</s></span>
+                <a href="#pricing" class="btn btn-primary-sm">Get Playbook &rarr;</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 1: SAMPLE CHAPTER READER -->
+    <div class="modal-overlay" id="sample-modal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <div>
+                    <span class="badge badge-purple">FREE PREVIEW</span>
+                    <h3>Chapter 1: The AI-Native PM Mindset</h3>
+                </div>
+                <button class="modal-close" id="close-sample-modal">&times;</button>
+            </div>
+            <div class="modal-body book-reader-body">
+                
+                <div class="reader-header-block">
+                    <div class="chapter-meta-line">CHAPTER 1 &bull; PHASE 1: IDEA</div>
+                    <h1 class="reader-title">The AI-Native PM Mindset</h1>
+                    <p class="reader-sub">From feature manager to system orchestrator</p>
+                </div>
+
+                <div class="reader-text">
+                    <p class="dropcap-paragraph">
+                        Picture a Monday planning meeting. Your engineer opens her laptop and says, "I built the first version of that export feature over the weekend, with an AI coding assistant. Want to see it?" It works. It's a bit rough, but it works. Something that would have been a three-sprint estimate last year is sitting there, running.
+                    </p>
+                    <p>
+                        Everyone in the room feels the same thing: <em>so what do I do now?</em> If building got this cheap, what is a product manager for?
+                    </p>
+
+                    <h3>The bottleneck moved</h3>
+                    <p>
+                        For a long time, the scarce thing in product work was engineering capacity. That's why so much of the PM job grew around it: write the ticket, argue about priority, protect the sprint, chase the timeline. Those habits made sense when building was slow and expensive.
+                    </p>
+                    <p>
+                        AI is compressing the cost of building. It isn't compressing the cost of <strong>being wrong</strong>. You can now build the wrong thing faster than ever, which is a great way to waste a quarter with a very productive-looking team.
+                    </p>
+
+                    <div class="reader-quote-box">
+                        "When building gets cheap, judgment gets expensive."
+                    </div>
+
+                    <p>
+                        So the job shifts. Less "manager of features and timelines," more <strong>orchestrator of a system</strong>: a system made of models, code, data, rules, and people, all of which have to work together and stay trustworthy.
+                    </p>
+
+                    <h3>What an orchestrator actually does</h3>
+                    <p>
+                        Think of a conductor. She doesn't play every instrument, and she couldn't play them all as well as the specialists anyway. Her job is to decide what piece is being played, set the tempo, and decide who plays what and when. And she's the one who hears when something is off.
+                    </p>
+                    <p>
+                        For an AI product, the same questions apply. Which parts of this experience should a model handle, and which should be plain code, a fixed rule, or a human? What does "good" sound like, and who's listening for it? When it goes off-key, who notices, and how quickly?
+                    </p>
+
+                    <div class="reader-cta-callout">
+                        <h4>Enjoying Chapter 1?</h4>
+                        <p>Get all 8 chapters, 18 frameworks, eval harness spreadsheets, and token calculators in the full book.</p>
+                        <a href="#pricing" class="btn btn-primary" onclick="document.getElementById('sample-modal').classList.remove('active')">Get Full Book for ₹999 &rarr;</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: CHECKOUT / BUY MODAL -->
+    <div class="modal-overlay" id="checkout-modal">
+        <div class="modal-content modal-medium">
+            <div class="modal-header">
+                <div>
+                    <span class="badge badge-purple">SECURE CHECKOUT</span>
+                    <h3 id="checkout-tier-title">Complete Bundle (₹1,499)</h3>
+                </div>
+                <button class="modal-close" id="close-checkout-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkout-form" onsubmit="event.preventDefault(); alert('Demo Order Received! In production, this connects to Stripe/LemonSqueezy Checkout.'); document.getElementById('checkout-modal').classList.remove('active');">
+                    <div class="checkout-summary">
+                        <div class="summary-line">
+                            <span id="summary-tier-name">Complete Bundle</span>
+                            <span class="summary-price" id="summary-tier-price">₹1,499 ($18 USD)</span>
+                        </div>
+                        <div class="summary-includes">
+                            ✓ Instant PDF + EPUB Ebook Download<br>
+                            ✓ 4 Notion Templates & Google Sheet Evals Harness<br>
+                            ✓ 100% 30-Day Risk-Free Money Back Guarantee
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Email Address (for instant delivery):</label>
+                        <input type="email" required placeholder="alex@company.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Payment Method:</label>
+                        <div class="payment-options">
+                            <label class="pay-option active">
+                                <input type="radio" name="pay" checked> Card (Stripe)
+                            </label>
+                            <label class="pay-option">
+                                <input type="radio" name="pay"> Apple Pay / Google Pay / UPI
+                            </label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full btn-lg">
+                        Complete Order & Download &rarr;
+                    </button>
+                    <p class="secure-note"><i data-lucide="lock"></i> 256-Bit SSL Encrypted Checkout &bull; Instant Access</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVE SOCIAL PROOF TOAST NOTIFICATION -->
+    <div class="proof-toast" id="proof-toast">
+        <div class="toast-avatar" id="toast-avatar">RC</div>
+        <div class="toast-content">
+            <div class="toast-title" id="toast-name">Rohan C. from Bengaluru</div>
+            <div id="toast-action">Just purchased <span class="toast-badge" id="toast-tier">Complete Bundle (₹1,499)</span></div>
+            <div class="toast-time" id="toast-time">⚡ 3 minutes ago</div>
+        </div>
+        <button class="toast-close" id="toast-close" aria-label="Close notification">&times;</button>
+    </div>
+
+    <!-- App JavaScript -->
+    <script src="js/app.js"></script>
+
+</body>
+</html>
