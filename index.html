@@ -57,8 +57,32 @@
             </div>
 
             <button class="mobile-menu-toggle" id="mobile-toggle" aria-label="Toggle menu">
-                <i data-lucide="menu"></i>
+                <i data-lucide="menu" id="mobile-toggle-icon"></i>
             </button>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div class="mobile-nav-drawer" id="mobile-drawer">
+            <div class="mobile-drawer-inner">
+                <nav class="mobile-nav-links">
+                    <a href="#staircase" class="mobile-nav-link"><i data-lucide="layers"></i> <span>Framework</span></a>
+                    <a href="#chapters" class="mobile-nav-link"><i data-lucide="book-open"></i> <span>Contents</span></a>
+                    <a href="#matrix-tool" class="mobile-nav-link"><i data-lucide="grid"></i> <span>Decision Matrix</span></a>
+                    <a href="#calculator" class="mobile-nav-link"><i data-lucide="calculator"></i> <span>Token Calculator</span></a>
+                    <a href="#author" class="mobile-nav-link"><i data-lucide="user"></i> <span>Author</span></a>
+                    <a href="#pricing" class="mobile-nav-link"><i data-lucide="tag"></i> <span>Pricing</span></a>
+                </nav>
+                <div class="mobile-drawer-actions">
+                    <button class="btn btn-outline btn-full" id="btn-open-sample-mobile">
+                        <i data-lucide="book-open"></i>
+                        <span>Preview Chapter 1 Free</span>
+                    </button>
+                    <a href="#pricing" class="btn btn-primary btn-full" id="btn-mobile-pricing">
+                        <span>Get Playbook — ₹999</span>
+                        <i data-lucide="arrow-right"></i>
+                    </a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -1207,7 +1231,7 @@
 
                 <!-- Instant Download Actions -->
                 <div style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">
-                    <a href="assets/The_AI_PM_Playbook.pdf" download="Building_AI_Products_That_Ship_Playbook.pdf" class="btn btn-primary btn-full btn-lg" id="btn-download-pdf">
+                    <a href="https://drive.google.com/uc?export=download&id=1PxFU7t3wxpHZ9mQ77GDAhOcudEq2fvUf" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-full btn-lg" id="btn-download-pdf">
                         <i data-lucide="download"></i>
                         <span>1. Download Ebook (PDF) &rarr;</span>
                     </a>

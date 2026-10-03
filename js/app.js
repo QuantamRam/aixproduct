@@ -300,9 +300,52 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnOpenSampleNav = document.getElementById('btn-open-sample-nav');
     const btnOpenSampleFooter = document.getElementById('btn-open-sample-footer');
     const btnReadPhaseSample = document.getElementById('btn-read-phase-sample');
+    const btnOpenSampleMobile = document.getElementById('btn-open-sample-mobile');
     
     const closeSampleModal = document.getElementById('close-sample-modal');
     const closeCheckoutModal = document.getElementById('close-checkout-modal');
+
+    // --------------------------------------------------------------------------
+    // MOBILE NAVIGATION DRAWER CONTROLLER
+    // --------------------------------------------------------------------------
+    const mobileToggle = document.getElementById('mobile-toggle');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, #btn-mobile-pricing');
+
+    function toggleMobileMenu(forceClose = false) {
+        if (!mobileDrawer) return;
+        const isOpen = forceClose ? false : !mobileDrawer.classList.contains('active');
+        
+        if (isOpen) {
+            mobileDrawer.classList.add('active');
+            document.body.classList.add('menu-open');
+            if (mobileToggle) mobileToggle.classList.add('active');
+        } else {
+            mobileDrawer.classList.remove('active');
+            document.body.classList.remove('menu-open');
+            if (mobileToggle) mobileToggle.classList.remove('active');
+        }
+    }
+
+    if (mobileToggle) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+    }
+
+    mobileNavLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            toggleMobileMenu(true);
+        });
+    });
+
+    if (btnOpenSampleMobile) {
+        btnOpenSampleMobile.addEventListener('click', () => {
+            toggleMobileMenu(true);
+            if (sampleModal) sampleModal.classList.add('active');
+        });
+    }
 
     // Open Sample Modal
     [btnOpenSample, btnOpenSampleNav, btnOpenSampleFooter, btnReadPhaseSample].forEach(btn => {
@@ -362,7 +405,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         doc.setFontSize(10);
         doc.setFont("helvetica", "normal");
-        doc.text("OFFICIAL TAX INVOICE & L&D REIMBURSEMENT RECEIPT", 260, 48);
+        doc.text("OFFICIAL TAX INVOICE & L&D REIMBURSEMENT RECEIPT", 555, 48, { align: 'right' });
 
         // Invoice Meta Section
         doc.setTextColor(15, 23, 42);
@@ -378,7 +421,7 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.setTextColor(6, 95, 70);
         doc.setFont("helvetica", "bold");
         doc.setFontSize(11);
-        doc.text("PAID IN FULL ✓", 455, 124);
+        doc.text("PAID IN FULL ✓", 497, 124, { align: 'center' });
 
         // Line Divider
         doc.setDrawColor(226, 232, 240);
@@ -409,7 +452,7 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.setTextColor(110, 44, 244);
         doc.text("DESCRIPTION / ITEM", 50, 276);
         doc.text("QTY", 390, 276);
-        doc.text("AMOUNT (INR)", 460, 276);
+        doc.text("AMOUNT (INR)", 545, 276, { align: 'right' });
 
         // Item Row
         doc.setTextColor(15, 23, 42);
@@ -417,24 +460,24 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.setFontSize(10);
         doc.text(`Building AI Products That Ship — ${planName}`, 50, 305);
         doc.text("1", 400, 305);
-        doc.text(`₹${amountINR.toLocaleString()}`, 465, 305);
+        doc.text(`₹${amountINR.toLocaleString()}`, 545, 305, { align: 'right' });
 
         doc.line(40, 320, 555, 320);
 
-        // Totals Box
+        // Totals Box (Right Aligned labels & values)
         doc.setFont("helvetica", "bold");
-        doc.text("Subtotal:", 380, 345);
-        doc.text(`₹${amountINR.toLocaleString()}`, 465, 345);
+        doc.text("Subtotal:", 435, 345, { align: 'right' });
+        doc.text(`₹${amountINR.toLocaleString()}`, 545, 345, { align: 'right' });
 
         doc.setFont("helvetica", "normal");
-        doc.text("Taxes & GST (18% Included):", 285, 362);
-        doc.text(`₹${(amountINR * 0.18).toFixed(2)}`, 465, 362);
+        doc.text("Taxes and Other Fees (18% Included):", 435, 362, { align: 'right' });
+        doc.text(`₹${(amountINR * 0.18).toFixed(2)}`, 545, 362, { align: 'right' });
 
         doc.setFont("helvetica", "bold");
         doc.setFontSize(11);
         doc.setTextColor(110, 44, 244);
-        doc.text("TOTAL PAID:", 365, 385);
-        doc.text(`₹${amountINR.toLocaleString()}`, 465, 385);
+        doc.text("TOTAL PAID:", 435, 385, { align: 'right' });
+        doc.text(`₹${amountINR.toLocaleString()}`, 545, 385, { align: 'right' });
 
         // Corporate L&D Reimbursement Note Box
         doc.setFillColor(243, 239, 254);
@@ -457,7 +500,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Footer
         doc.setTextColor(148, 163, 184);
         doc.setFontSize(8);
-        doc.text("AI x PRODUCT Press • Ram Chandar Sanaboyina • https://aixproduct.netlify.app", 160, 780);
+        doc.text("AI x PRODUCT Press • Ram Chandar Sanaboyina • https://aixproduct.netlify.app", 297.5, 780, { align: 'center' });
 
         doc.save(`Invoice_${invoiceNo}_${buyerName.replace(/\s+/g, '_')}.pdf`);
     }
@@ -474,92 +517,138 @@ document.addEventListener('DOMContentLoaded', () => {
         const companyStr = data.company ? `at ${data.company}` : "";
         const dateStr = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
-        // Outer Double Borders
+        // Outer Double Borders (Sleek margins)
         doc.setDrawColor(110, 44, 244);
         doc.setLineWidth(2);
-        doc.rect(20, 20, 555, 802);
+        doc.rect(25, 25, 545, 792);
 
         doc.setDrawColor(221, 214, 254);
         doc.setLineWidth(1);
-        doc.rect(26, 26, 543, 790);
+        doc.rect(30, 30, 535, 782);
 
-        // Header Logo & Banner
+        // Header Banner
         doc.setFillColor(110, 44, 244);
-        doc.rect(40, 50, 515, 60, 'F');
+        doc.rect(45, 50, 505, 55, 'F');
 
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(24);
-        doc.text("AI x PRODUCT", 60, 88);
+        doc.setFontSize(22);
+        doc.text("AI x PRODUCT", 65, 85);
 
-        doc.setFontSize(10);
+        doc.setFontSize(9.5);
         doc.setFont("helvetica", "normal");
-        doc.text("OFFICIAL EXECUTIVE ENDORSEMENT", 330, 88);
+        doc.text("OFFICIAL EXECUTIVE ENDORSEMENT", 535, 85, { align: 'right' });
 
         // Date
         doc.setTextColor(100, 116, 139);
-        doc.setFontSize(10);
+        doc.setFontSize(9.5);
         doc.setFont("helvetica", "normal");
-        doc.text(`Date: ${dateStr}`, 60, 140);
+        doc.text(`Date: ${dateStr}`, 60, 135);
 
-        // Document Title
+        // Document Title (wrapped & sized to prevent out-of-bounds overflow)
         doc.setTextColor(15, 23, 42);
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(16);
-        doc.text("LETTER OF PROFESSIONAL APPRECIATION & CAREER ENDORSEMENT", 60, 175);
+        doc.setFontSize(13.5);
+        const titleText = "LETTER OF PROFESSIONAL APPRECIATION & CAREER ENDORSEMENT";
+        const titleLines = doc.splitTextToSize(titleText, 475);
+        let currentY = 165;
+        titleLines.forEach(line => {
+            doc.text(line, 60, currentY);
+            currentY += 17;
+        });
 
-        // Recipient Salutation
-        doc.setFontSize(13);
+        // Soft Accent Divider Line
+        doc.setDrawColor(221, 214, 254);
+        doc.setLineWidth(1);
+        doc.line(60, currentY + 4, 535, currentY + 4);
+        currentY += 24;
+
+        // Recipient Salutation Header
+        doc.setFontSize(12);
         doc.setFont("helvetica", "bold");
         doc.setTextColor(110, 44, 244);
-        doc.text(`To: ${buyerName} ${companyStr}`, 60, 215);
+        const recipientHeader = `To: ${buyerName} ${companyStr}`;
+        const recipientLines = doc.splitTextToSize(recipientHeader, 475);
+        recipientLines.forEach(line => {
+            doc.text(line, 60, currentY);
+            currentY += 16;
+        });
+        currentY += 14;
 
-        // Letter Body Paragraphs
+        // Letter Body Paragraphs (fully dynamic split to size)
         doc.setTextColor(51, 65, 85);
         doc.setFont("helvetica", "normal");
-        doc.setFontSize(11);
-        
-        doc.text("Dear " + buyerName + ",", 60, 250);
+        doc.setFontSize(10.5);
 
-        doc.text("On behalf of the AI x PRODUCT leadership community, I want to personally commend and recognize", 60, 280);
-        doc.text("your dedicated investment in professional AI Product Management & Systems Architecture mastery", 60, 298);
-        doc.text("through the 'Building AI Products That Ship' playbook.", 60, 316);
+        const paragraphs = [
+            `Dear ${buyerName},`,
+            "On behalf of the AI x PRODUCT leadership community, I want to personally commend and recognize your dedicated investment in professional AI Product Management & Systems Architecture mastery through the 'Building AI Products That Ship' playbook.",
+            "As artificial intelligence reshapes modern software creation, the bottleneck in product development has fundamentally shifted. While building has become cheap, high-caliber product judgment has become the rarest asset in technology. Moving beyond simple weekend demos to orchestrate battle-hardened, high-margin, zero-hallucination AI products requires exceptional strategic rigor.",
+            "By actively mastering Model-Product Fit, Automated Eval Harnesses, Token Economics, and Non-Happy State UX Design, you demonstrate a clear commitment to driving measurable engineering excellence and sustainable business growth within your organization.",
+            "We proudly endorse your leadership initiative and commend your dedication to shaping the future of AI-native product development."
+        ];
 
-        doc.text("As artificial intelligence reshapes modern software creation, the bottleneck in product development has", 60, 350);
-        doc.text("fundamentally shifted. While building has become cheap, high-caliber product judgment has become", 60, 368);
-        doc.text("the rarest asset in technology. Moving beyond simple weekend demos to orchestrate battle-hardened,", 60, 386);
-        doc.text("high-margin, zero-hallucination AI products requires exceptional strategic rigor.", 60, 404);
+        paragraphs.forEach((p, idx) => {
+            const pLines = doc.splitTextToSize(p, 475);
+            pLines.forEach(line => {
+                doc.text(line, 60, currentY);
+                currentY += 15;
+            });
+            currentY += (idx === 0 ? 10 : 12);
+        });
 
-        doc.text("By actively mastering Model-Product Fit, Automated Eval Harnesses, Token Economics, and Non-Happy State", 60, 438);
-        doc.text("UX Design, you demonstrate a clear commitment to driving measurable engineering excellence and sustainable", 60, 456);
-        doc.text("business growth within your organization.", 60, 474);
-
-        doc.text("We proudly endorse your leadership initiative and commend your dedication to shaping the future of", 60, 508);
-        doc.text("AI-native product development.", 60, 526);
-
-        // Quote Box
+        // Aesthetic Quote Box
+        currentY += 8;
         doc.setFillColor(248, 246, 254);
-        doc.rect(60, 560, 475, 45, 'F');
+        doc.setDrawColor(221, 214, 254);
+        doc.setLineWidth(1);
+        doc.rect(60, currentY, 475, 42, 'FD');
+
         doc.setTextColor(88, 30, 203);
         doc.setFont("helvetica", "bold-italic");
-        doc.setFontSize(11);
-        doc.text('"Small, shipped, measured, and improved beats big, perfect, and imagined."', 80, 587);
+        doc.setFontSize(10.5);
+        doc.text('"Small, shipped, measured, and improved beats big, perfect, and imagined."', 297.5, currentY + 25, { align: 'center' });
 
-        // Signature Block
+        currentY += 65;
+
+        // Signature Block & Verification Badge
         doc.setTextColor(15, 23, 42);
         doc.setFont("helvetica", "bold");
-        doc.setFontSize(12);
-        doc.text("Sincerely,", 60, 640);
+        doc.setFontSize(11);
+        doc.text("Sincerely,", 60, currentY);
+        currentY += 25;
 
-        doc.setFontSize(14);
+        doc.setFontSize(13.5);
         doc.setTextColor(110, 44, 244);
-        doc.text("Ram Chandar Sanaboyina", 60, 670);
+        doc.text("Ram Chandar Sanaboyina", 60, currentY);
+        currentY += 16;
 
         doc.setTextColor(100, 116, 139);
-        doc.setFontSize(10);
+        doc.setFontSize(9.5);
         doc.setFont("helvetica", "normal");
-        doc.text("Author & AI Systems Architect, AI x PRODUCT", 60, 686);
-        doc.text("https://aixproduct.netlify.app", 60, 702);
+        doc.text("Author & AI Systems Architect, AI x PRODUCT", 60, currentY);
+        currentY += 15;
+        doc.setTextColor(110, 44, 244);
+        doc.text("https://aixproduct.netlify.app", 60, currentY);
+
+        // Verification Badge / Official Seal
+        doc.setFillColor(236, 253, 245);
+        doc.setDrawColor(16, 185, 129);
+        doc.setLineWidth(1);
+        doc.roundedRect(415, currentY - 50, 120, 46, 6, 6, 'FD');
+
+        doc.setTextColor(6, 95, 70);
+        doc.setFont("helvetica", "bold");
+        doc.setFontSize(9);
+        doc.text("VERIFIED EXECUTIVE", 475, currentY - 32, { align: 'center' });
+        doc.setFontSize(8);
+        doc.setFont("helvetica", "normal");
+        doc.text("ENDORSEMENT ✓", 475, currentY - 18, { align: 'center' });
+
+        // Footer
+        doc.setTextColor(148, 163, 184);
+        doc.setFontSize(8);
+        doc.text("AI x PRODUCT Leadership Council • Official Endorsement Certification", 297.5, 785, { align: 'center' });
 
         doc.save(`Career_Endorsement_Letter_${buyerName.replace(/\s+/g, '_')}.pdf`);
     }
