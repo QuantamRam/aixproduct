@@ -11,6 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --------------------------------------------------------------------------
+    // MICROSOFT CLARITY CUSTOM ACTIVITY TRACKING
+    // --------------------------------------------------------------------------
+    function trackClarityEvent(eventName, data) {
+        if (typeof window.clarity === 'function') {
+            try {
+                window.clarity("event", eventName);
+                if (data && typeof data === 'object') {
+                    Object.keys(data).forEach(key => {
+                        window.clarity("set", key, String(data[key]));
+                    });
+                }
+            } catch (err) {
+                // Ignore analytics errors silently
+            }
+        }
+    }
+    window.trackClarityEvent = trackClarityEvent;
+
+    // Track initial page view event
+    trackClarityEvent('page_view_loaded', { path: window.location.pathname });
+
+    // Track all customer click activity across CTAs, buttons, and links
+    document.addEventListener('click', (e) => {
+        const clickable = e.target.closest('a, button, input[type="button"], input[type="submit"], .btn, .stair-step-card, .chapter-card, .faq-question, .checkout-trigger');
+        if (clickable) {
+            const label = (clickable.innerText || clickable.textContent || clickable.value || clickable.alt || 'element').trim().replace(/\s+/g, ' ').substring(0, 60);
+            const tag = clickable.tagName.toLowerCase();
+            const elementId = clickable.id || clickable.className || 'no_id';
+            trackClarityEvent('customer_click', {
+                element_type: tag,
+                element_id: elementId,
+                label: label
+            });
+        }
+    });
+
+    // --------------------------------------------------------------------------
     // 1. STAIRCASE FRAMEWORK INTERACTIVE STEPPER
     // --------------------------------------------------------------------------
     const stairSteps = document.querySelectorAll('.stair-step-card');
@@ -92,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 `).join('');
 
                 if (window.lucide) lucide.createIcons();
+                trackClarityEvent('view_framework_phase', { step: stepNum, title: data.title });
             }
         });
     });
@@ -351,7 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
     [btnOpenSample, btnOpenSampleNav, btnOpenSampleFooter, btnReadPhaseSample].forEach(btn => {
         if (btn) {
             btn.addEventListener('click', () => {
-                sampleModal.classList.add('active');
+                if (sampleModal) sampleModal.classList.add('active');
+                trackClarityEvent('sample_chapter_opened');
             });
         }
     });
@@ -703,6 +742,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     downloadSuccessModal.classList.add('active');
                 }
 
+                trackClarityEvent('purchase_completed', {
+                    plan: planName,
+                    amount: amountInINR,
+                    tx_id: lastOrderDetails.txId
+                });
+
                 if (closeSuccessModal) {
                     closeSuccessModal.addEventListener('click', () => {
                         downloadSuccessModal.classList.remove('active');
@@ -722,6 +767,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         };
 
+        trackClarityEvent('razorpay_modal_opened', { plan: planName, amount: amountInINR });
+
         if (window.Razorpay) {
             const rzp = new window.Razorpay(options);
             rzp.open();
@@ -737,12 +784,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnDownloadInvoice) {
         btnDownloadInvoice.addEventListener('click', () => {
             generateCustomInvoicePDF(lastOrderDetails);
+            trackClarityEvent('invoice_pdf_downloaded');
         });
     }
 
     if (btnDownloadLetter) {
         btnDownloadLetter.addEventListener('click', () => {
             generateAppreciationLetterPDF(lastOrderDetails);
+            trackClarityEvent('letter_pdf_downloaded');
         });
     }
 
@@ -768,21 +817,22 @@ document.addEventListener('DOMContentLoaded', () => {
             summaryTierName.textContent = tierStr.split('(')[0].trim();
             
             if (tierStr.includes('1,499')) {
-                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
+                summaryTierPrice.textContent = '₹1,499';
                 selectedPlanName = "Complete Bundle";
-                selectedPlanPrice = 1;
+                selectedPlanPrice = 1499;
             } else if (tierStr.includes('4,999')) {
-                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
+                summaryTierPrice.textContent = '₹4,999';
                 selectedPlanName = "Team License";
-                selectedPlanPrice = 1;
+                selectedPlanPrice = 4999;
             } else {
-                summaryTierPrice.textContent = '₹1 (Test Mode Special)';
+                summaryTierPrice.textContent = '₹999';
                 selectedPlanName = "Digital Playbook";
-                selectedPlanPrice = 1;
+                selectedPlanPrice = 999;
             }
 
             // Open Checkout Modal
             if (checkoutModal) checkoutModal.classList.add('active');
+            trackClarityEvent('checkout_modal_opened', { plan: selectedPlanName });
         });
     });
 
